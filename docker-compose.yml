@@ -14,12 +14,11 @@ services:
       - 9080:8080
   web:
     build: .
-    volumes: 
-      - ./:/usr/src/app
     ports:
       - 3333:3333
     depends_on:
       - db
+    command: sh -c "dockerize -wait tcp://db:3306 -timeout 30s && npm start"
   nginx:
     build: ./nginx/.
     ports:
