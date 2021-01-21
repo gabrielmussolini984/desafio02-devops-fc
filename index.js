@@ -32,9 +32,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) throw err;
-  connection.query("CREATE DATABASE IF NOT EXISTS db;", function (err, result) {
-    if (err) throw err;
-  });
+
   connection.query(`
     CREATE TABLE IF NOT EXISTS peoples(
     id INT AUTO_INCREMENT PRIMARY KEY,
